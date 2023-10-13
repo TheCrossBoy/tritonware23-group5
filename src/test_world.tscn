@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4xvskac07wvd"]
 
-[ext_resource type="Script" path="res://src/characters/player.gd" id="1_2myui"]
+[ext_resource type="PackedScene" uid="uid://cdpmpjrnwi5yj" path="res://src/characters/player.tscn" id="1_lsush"]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_2myui")
+[node name="Player" parent="." instance=ExtResource("1_lsush")]
+
+[node name="Player2" parent="." instance=ExtResource("1_lsush")]
