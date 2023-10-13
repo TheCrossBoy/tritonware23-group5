@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 600.0
 
 
 func _physics_process(delta):
@@ -12,13 +12,17 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if Input.is_anything_pressed():
-		var x = Input.get_axis("ui_left", "ui_right")
-		var y = Input.get_axis("ui_up", "ui_down")
-		velocity.x = x * SPEED
-		velocity.y = y * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	#if Input.is_anything_pressed():
+	
+	
+	var new_velocity = Vector2(0, 0)
+	new_velocity.x = Input.get_axis("ui_left", "ui_right")
+	new_velocity.y = Input.get_axis("ui_up", "ui_down")
+	
+	new_velocity = new_velocity.normalized() * SPEED
+	velocity = velocity.move_toward(new_velocity, 9000*delta)
+	#velocity = new_velocity
 
 	move_and_slide()
 
