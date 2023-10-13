@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 600.0
+const SPEED = 500.0
 
 
 func _physics_process(delta):
@@ -21,7 +21,7 @@ func _physics_process(delta):
 	new_velocity.y = Input.get_axis("ui_up", "ui_down")
 	
 	new_velocity = new_velocity.normalized() * SPEED
-	velocity = velocity.move_toward(new_velocity, 9000*delta)
+	velocity = velocity.move_toward(new_velocity, 7500*delta)
 	#velocity = new_velocity
 
 	move_and_slide()
