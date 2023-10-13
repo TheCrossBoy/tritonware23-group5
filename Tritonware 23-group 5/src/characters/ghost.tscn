@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://clr766xxd31r0"]
+
+[node name="Ghost" type="CharacterBody2D"]
