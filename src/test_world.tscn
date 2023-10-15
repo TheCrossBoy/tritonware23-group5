@@ -5,5 +5,3 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_lsush")]
-
-[node name="Player2" parent="." instance=ExtResource("1_lsush")]
