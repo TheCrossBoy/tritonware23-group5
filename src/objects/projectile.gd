@@ -18,7 +18,7 @@ func _physics_process(delta):
 	pass
 
 
-func _on_plasma_area_body_entered(body):
+func _on_projectile_area_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 		queue_free()
