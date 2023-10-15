@@ -5,7 +5,8 @@ extends CharacterBody2D
 @export var speed = 500.0
 @export var accel = 7500
 @export var projectile_scene: PackedScene
-@export var projectile_speed = 700
+@export var projectile_speed = 600
+
 
 func _physics_process(delta):
 	# Handle Shooting
@@ -13,7 +14,7 @@ func _physics_process(delta):
 		get_node("ShootTimer").start()
 		var projectile = projectile_scene.instantiate()
 		projectile.position = position
-		projectile.velocity = Vector2(0, 0).move_toward(get_viewport().get_mouse_position() - position, projectile_speed)
+		projectile.velocity = Vector2(0, 0).move_toward(get_viewport().get_mouse_position() - position, projectile_speed).normalized() * projectile_speed
 		projectile.look_at(get_viewport().get_mouse_position())
 		get_tree().get_root().add_child(projectile)
 		

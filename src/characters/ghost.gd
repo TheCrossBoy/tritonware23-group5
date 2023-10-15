@@ -13,7 +13,7 @@ func _ready():
 	is_ready = true
 
 func _physics_process(delta):
-	velocity = Vector2(0, 0).move_toward(player.global_position - global_position, speed)
+	velocity = Vector2(0, 0).move_toward(player.global_position - global_position, speed).normalized() * speed
 	move_and_slide()
 
 func take_damage(damage):
@@ -25,5 +25,5 @@ func _on_attack_timer_timeout():
 	if get_node("../player"):
 		var projectile = projectile_scene.instantiate()
 		projectile.position = position #+ Vector2(-60, -10)
-		projectile.velocity = Vector2(0, 0).move_toward(player.global_position + player.velocity/3.5 - global_position, projectile_speed)
+		projectile.velocity = Vector2(0, 0).move_toward(player.global_position + player.velocity/3.5 - global_position, projectile_speed).normalized() * projectile_speed
 		get_tree().get_root().add_child(projectile)
