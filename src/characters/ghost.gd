@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 100.0
+@export var speed = 150.0
 @export var health = 100
 @export var projectile_scene: PackedScene
 @export var projectile_speed = 300
