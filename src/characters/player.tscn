@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=5 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
 [ext_resource type="Texture2D" uid="uid://cfcva8qk54m73" path="res://icon.svg" id="2_7hg43"]
+[ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jfqcw"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_mxcia")
+projectile_scene = ExtResource("2_rbwar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7hg43")
@@ -14,3 +17,7 @@ texture = ExtResource("2_7hg43")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_jfqcw")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

@@ -1,16 +1,22 @@
 extends CharacterBody2D
 
+
 @export var health = 100
 @export var speed = 500.0
 @export var accel = 7500
-
+@export var projectile_scene: PackedScene
+@export var projectile_speed = 700
 
 func _physics_process(delta):
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		pass
-		#velocity.y = JUMP_VELOCITY
-
+	# Handle Shooting
+	if Input.is_action_pressed("ui_select") && get_node("ShootTimer").is_stopped():
+		get_node("ShootTimer").start()
+		var projectile = projectile_scene.instantiate()
+		projectile.position = position
+		projectile.velocity = Vector2(0, 0).move_toward(get_viewport().get_mouse_position() - position, projectile_speed)
+		projectile.look_at(get_viewport().get_mouse_position())
+		get_tree().get_root().add_child(projectile)
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
