@@ -6,16 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6udh"]
 radius = 29.0172
 
-[node name="plasma_ball" type="CharacterBody2D"]
+[node name="plasma_ball" type="Area2D"]
 script = ExtResource("1_uxxdp")
+SPEED = null
+damage = null
 
-[node name="plasma_area" type="Area2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="plasma_area"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_xqrnu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plasma_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c6udh")
 
-[connection signal="body_entered" from="plasma_area" to="." method="_on_plasma_area_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

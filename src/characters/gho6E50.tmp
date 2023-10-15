@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://clr766xxd31r0"]
+[gd_scene load_steps=5 format=3 uid="uid://clr766xxd31r0"]
 
 [ext_resource type="Texture2D" uid="uid://dmbj81qyy12xc" path="res://assets/assets_characters/ghost.png" id="1_hymtf"]
-[ext_resource type="Script" path="res://src/characters/ghost.gd" id="1_me11j"]
-[ext_resource type="PackedScene" uid="uid://bm3hpc2hfe0me" path="res://src/objects/plasma_ball.tscn" id="2_1ho0t"]
+[ext_resource type="Script" path="res://src/objects/plasma_ball.gd" id="1_jpulj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i5t7n"]
 animations = [{
@@ -20,8 +19,7 @@ radius = 53.0
 height = 158.0
 
 [node name="ghost" type="CharacterBody2D"]
-script = ExtResource("1_me11j")
-projectile_scene = ExtResource("2_1ho0t")
+script = ExtResource("1_jpulj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -29,9 +27,3 @@ sprite_frames = SubResource("SpriteFrames_i5t7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_apro6")
-
-[node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

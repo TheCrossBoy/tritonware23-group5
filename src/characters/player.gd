@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-
-const SPEED = 500.0
+@export var health = 100
+@export var speed = 500.0
+@export var accel = 7500
 
 
 func _physics_process(delta):
@@ -20,9 +21,14 @@ func _physics_process(delta):
 	new_velocity.x = Input.get_axis("ui_left", "ui_right")
 	new_velocity.y = Input.get_axis("ui_up", "ui_down")
 	
-	new_velocity = new_velocity.normalized() * SPEED
-	velocity = velocity.move_toward(new_velocity, 7500*delta)
+	new_velocity = new_velocity.normalized() * speed
+	velocity = velocity.move_toward(new_velocity, accel*delta)
 	#velocity = new_velocity
 
 	move_and_slide()
+	
+func take_damage(damage):
+	health = health - damage
+	if health <=0:
+		queue_free()
 

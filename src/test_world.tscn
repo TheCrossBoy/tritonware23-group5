@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4xvskac07wvd"]
+[gd_scene load_steps=3 format=3 uid="uid://b4xvskac07wvd"]
 
 [ext_resource type="PackedScene" uid="uid://cdpmpjrnwi5yj" path="res://src/characters/player.tscn" id="1_lsush"]
+[ext_resource type="PackedScene" uid="uid://clr766xxd31r0" path="res://src/characters/ghost.tscn" id="2_rc78h"]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_lsush")]
+[node name="player" parent="." instance=ExtResource("1_lsush")]
+
+[node name="ghost" parent="." instance=ExtResource("2_rc78h")]
+position = Vector2(880, 159)
