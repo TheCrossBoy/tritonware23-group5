@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://bm3hpc2hfe0me"]
+[gd_scene load_steps=3 format=3 uid="uid://bm3hpc2hfe0me"]
+
+[ext_resource type="Texture2D" uid="uid://4hcidyyt11dy" path="res://assets/assets_characters/temp_plasma.png" id="1_xqrnu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6udh"]
+radius = 29.0172
 
 [node name="plasma_ball" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_xqrnu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c6udh")
