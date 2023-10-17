@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jfqcw"]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 14
 script = ExtResource("1_mxcia")
 projectile_scene = ExtResource("2_rbwar")
 

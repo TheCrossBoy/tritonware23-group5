@@ -144,12 +144,13 @@ radius = 23.0
 height = 68.0
 
 [node name="ghost" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 7
+collision_mask = 13
 script = ExtResource("1_me11j")
 projectile_scene = ExtResource("2_1ho0t")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_81wus")
 autoplay = "default"
