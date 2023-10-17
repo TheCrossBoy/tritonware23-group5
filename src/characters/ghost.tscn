@@ -153,7 +153,6 @@ projectile_scene = ExtResource("2_1ho0t")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_81wus")
 autoplay = "default"
-frame_progress = 0.232476
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

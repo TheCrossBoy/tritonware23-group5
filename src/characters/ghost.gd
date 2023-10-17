@@ -14,6 +14,10 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = Vector2(0, 0).move_toward(player.global_position - global_position, speed).normalized() * speed
+	if velocity.x > 0:
+		$AnimatedSprite.flip_h = false
+	else:
+		$AnimatedSprite.flip_h = true
 	move_and_slide()
 
 func take_damage(damage):
