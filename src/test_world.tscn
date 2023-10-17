@@ -7,6 +7,7 @@
 [node name="World" type="Node2D"]
 
 [node name="Floor" type="TileMap" parent="."]
+visible = false
 position = Vector2(896, 480)
 tile_set = ExtResource("1_vvxq7")
 format = 2
