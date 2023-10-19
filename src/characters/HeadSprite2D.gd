@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var health = 100
 @export var damage_per_second = 100
 @export var self_damage_on_hit = 20
+@export var snapback_damage = 1000
 
 func _physics_process(delta):
 	# Handle splitting head
@@ -47,6 +48,7 @@ func self_damage():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Unattatched, so do running around things
 	if not attatched and get_node("HeadAttackTimer").is_stopped():
 		var collider = get_node("Area2D")
 		if collider.has_overlapping_bodies():
@@ -62,4 +64,10 @@ func _process(delta):
 				body.block_attack()
 				self_damage()
 				get_node("HeadAttackTimer").start()
-	pass
+	
+
+
+func _on_body_entered(body):
+	# Attatched but not yet back on our body, so do big damage
+	if attatched and top_level and body.has_method("take_damage"):
+		body.take_damage(snapback_damage)

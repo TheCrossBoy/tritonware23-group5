@@ -39,3 +39,7 @@ func take_damage(damage):
 	if health <=0:
 		queue_free()
 
+
+
+func _on_body_entered(body):
+	pass # Replace with function body.

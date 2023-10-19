@@ -48,3 +48,5 @@ shape = SubResource("CircleShape2D_2u5pk")
 [node name="HeadAttackTimer" type="Timer" parent="Head"]
 wait_time = 0.5
 one_shot = true
+
+[connection signal="body_entered" from="Head/Area2D" to="Head" method="_on_body_entered"]
