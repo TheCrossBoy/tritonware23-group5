@@ -11,6 +11,7 @@ script = ExtResource("1_pbhc8")
 damage = 15
 
 [node name="projectile_area" type="Area2D" parent="."]
+collision_layer = 17
 collision_mask = 14
 
 [node name="Sprite2D" type="Sprite2D" parent="projectile_area"]

@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=8 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
-[ext_resource type="Texture2D" uid="uid://cfcva8qk54m73" path="res://icon.svg" id="2_7hg43"]
+[ext_resource type="Texture2D" uid="uid://d4ha7vsr8n3ny" path="res://icon.svg" id="2_7hg43"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
+[ext_resource type="Texture2D" uid="uid://4hcidyyt11dy" path="res://assets/assets_characters/temp_plasma.png" id="4_rcjn6"]
+[ext_resource type="Script" path="res://src/characters/HeadSprite2D.gd" id="4_wmasi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jfqcw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
@@ -20,4 +24,27 @@ shape = SubResource("RectangleShape2D_jfqcw")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
+
+[node name="Head" type="CharacterBody2D" parent="."]
+scale = Vector2(0.05, 0.05)
+script = ExtResource("4_wmasi")
+
+[node name="HeadCooldownTimer" type="Timer" parent="Head"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+texture = ExtResource("4_rcjn6")
+
+[node name="Area2D" type="Area2D" parent="Head"]
+collision_layer = 0
+collision_mask = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_2u5pk")
+
+[node name="HeadAttackTimer" type="Timer" parent="Head"]
+wait_time = 0.5
 one_shot = true
