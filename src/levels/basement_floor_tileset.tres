@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cdj0kp21hwojb"]
 
-[ext_resource type="Texture2D" path="res://assets/assets_levels/basement_tileset.png" id="1_ifjj3"]
+[ext_resource type="Texture2D" uid="uid://csqcsfg7ngvvj" path="res://assets/assets_levels/basement_tileset.png" id="1_ifjj3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3mui"]
 resource_name = "basement_tiles"

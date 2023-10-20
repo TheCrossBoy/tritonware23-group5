@@ -1,22 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=11 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
-[ext_resource type="Texture2D" uid="uid://cfcva8qk54m73" path="res://icon.svg" id="2_7hg43"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
+[ext_resource type="Texture2D" uid="uid://bm5ausvribl0f" path="res://assets/assets_characters/Pumkin Body Sprite Sheet.png" id="3_d28js"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfqcw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ppo"]
+atlas = ExtResource("3_d28js")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njq01"]
+atlas = ExtResource("3_d28js")
+region = Rect2(70, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpkvy"]
+atlas = ExtResource("3_d28js")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nhg2"]
+atlas = ExtResource("3_d28js")
+region = Rect2(245, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wquhx"]
+atlas = ExtResource("3_d28js")
+region = Rect2(280, 0, 35, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1kgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50ppo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njq01")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpkvy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nhg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wquhx")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q500d"]
+radius = 6.15385
+height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
 script = ExtResource("1_mxcia")
 projectile_scene = ExtResource("2_rbwar")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_7hg43")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_b1kgi")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 6)
 scale = Vector2(6.5, 6.5)
-shape = SubResource("RectangleShape2D_jfqcw")
+shape = SubResource("CapsuleShape2D_q500d")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.2
