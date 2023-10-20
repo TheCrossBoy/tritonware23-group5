@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://burehh1iijg64"]
+[gd_scene load_steps=9 format=3 uid="uid://burehh1iijg64"]
 
 [ext_resource type="Script" path="res://src/characters/slime.gd" id="1_n475i"]
 [ext_resource type="Texture2D" uid="uid://dlc31k738kpbp" path="res://assets/assets_characters/slime-model-green.png" id="2_4dj13"]
+[ext_resource type="PackedScene" uid="uid://bp406a2cdlcrh" path="res://src/flash_animation.tscn" id="3_eqbba"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_khxu7"]
 animations = [{
@@ -56,6 +57,7 @@ _data = {
 }
 
 [node name="slime" type="CharacterBody2D"]
+modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_n475i")
@@ -78,3 +80,5 @@ libraries = {
 }
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="FlashAnimation" parent="." instance=ExtResource("3_eqbba")]

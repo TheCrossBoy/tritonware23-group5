@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://dmvrduxtk0kgu"]
+[gd_scene load_steps=40 format=3 uid="uid://dmvrduxtk0kgu"]
 
 [ext_resource type="Texture2D" uid="uid://dvvarqotby4jw" path="res://assets/assets_characters/rat-idle-spriteSheet.png" id="1_i5k4u"]
 [ext_resource type="Script" path="res://src/characters/rat.gd" id="1_vh7xp"]
 [ext_resource type="Texture2D" uid="uid://6ptppujnd5kc" path="res://assets/assets_characters/ratattackleft-Sheet.png" id="1_wg35p"]
 [ext_resource type="Texture2D" uid="uid://biagqflmqehf4" path="res://assets/assets_characters/rat-death-Sheet.png" id="2_2soap"]
 [ext_resource type="Texture2D" uid="uid://cjw7nie4yl6h" path="res://assets/assets_characters/rat-jumping-Sheet.png" id="4_pka7o"]
+[ext_resource type="PackedScene" uid="uid://bp406a2cdlcrh" path="res://src/flash_animation.tscn" id="6_ii45g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bf7n"]
 atlas = ExtResource("1_wg35p")
@@ -251,6 +252,7 @@ radius = 9.0
 height = 40.0
 
 [node name="rat" type="CharacterBody2D"]
+modulate = Color(0.807843, 0.807843, 0.807843, 1)
 scale = Vector2(1.25, 1.25)
 collision_layer = 4
 collision_mask = 11
@@ -269,3 +271,5 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_od7i6")
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="FlashAnimation" parent="." instance=ExtResource("6_ii45g")]
