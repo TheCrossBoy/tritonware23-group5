@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6osrwdlabdlf"]
+
+[ext_resource type="Script" path="res://src/levels/title_screen.gd" id="1_621wa"]
+[ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="2_pif5p"]
+[ext_resource type="FontFile" uid="uid://exh0csn432o8" path="res://assets/Xolonium-Regular.ttf" id="3_cvryt"]
+[ext_resource type="Texture2D" uid="uid://do47id3pbw36p" path="res://assets/crown.png" id="4_wun04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cx1y8"]
+font = ExtResource("3_cvryt")
+font_size = 64
+font_color = Color(0.964706, 0.741176, 0, 1)
+
+[node name="Finish" type="Node2D"]
+position = Vector2(960, 540)
+script = ExtResource("1_621wa")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.101961, 0.101961, 0.101961, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_pif5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 15)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_wun04")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -517.0
+offset_top = -221.0
+offset_right = 543.0
+offset_bottom = -140.0
+text = "Congrats! You found the crown!"
+label_settings = SubResource("LabelSettings_cx1y8")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -519.0
+offset_top = 165.0
+offset_right = 541.0
+offset_bottom = 408.0
+text = "You are now a rich zombie. 
+
+Stilll no head tho."
+label_settings = SubResource("LabelSettings_cx1y8")
+horizontal_alignment = 1

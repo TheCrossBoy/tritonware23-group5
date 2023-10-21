@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://brn5amho1qnw6"]
+
+[ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="2_tggwj"]
+[ext_resource type="Texture2D" uid="uid://do47id3pbw36p" path="res://assets/crown.png" id="3_kf7b1"]
+[ext_resource type="FontFile" uid="uid://exh0csn432o8" path="res://assets/Xolonium-Regular.ttf" id="4_v1d8g"]
+
+[sub_resource type="GDScript" id="GDScript_upr0y"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+func _input(event):
+	if $Timer.is_stopped() && event.is_pressed():
+		globals.next_scene()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_cx1y8"]
+font = ExtResource("4_v1d8g")
+font_size = 64
+font_color = Color(0.964706, 0.741176, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_23ig1"]
+font = ExtResource("4_v1d8g")
+font_size = 48
+font_color = Color(0.964706, 0.741176, 0, 1)
+
+[node name="Finish" type="Node2D"]
+position = Vector2(960, 540)
+script = SubResource("GDScript_upr0y")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.101961, 0.101961, 0.101961, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tggwj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(738, 402)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_kf7b1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -834.0
+offset_top = -396.0
+offset_right = 226.0
+offset_bottom = -315.0
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_cx1y8")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -829.0
+offset_top = -135.0
+offset_right = 848.0
+offset_bottom = 108.0
+text = "Art: Molly Crawford, William Dres, Joseph Soriano
+
+Programming: Jerry Ding, Josh Cross
+
+Music: Anderson Myers (Commander Frostbite)
+"
+label_settings = SubResource("LabelSettings_23ig1")

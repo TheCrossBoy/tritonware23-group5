@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ycwyh0877nty"]
+[gd_scene load_steps=7 format=3 uid="uid://ycwyh0877nty"]
 
 [ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="1_hb3id"]
+[ext_resource type="Script" path="res://src/levels/level.gd" id="1_l3fic"]
 [ext_resource type="TileSet" uid="uid://cva4jwpyrikmr" path="res://src/levels/attic_floor_tileset.tres" id="2_73w38"]
 [ext_resource type="TileSet" uid="uid://dtx63m7kc7olf" path="res://src/levels/basement_wall.tres" id="3_ojoj0"]
 [ext_resource type="PackedScene" uid="uid://cdpmpjrnwi5yj" path="res://src/characters/player.tscn" id="4_cukqa"]
+[ext_resource type="PackedScene" uid="uid://dmvrduxtk0kgu" path="res://src/characters/rat.tscn" id="5_8gquo"]
 
 [node name="Attic" type="Node2D"]
+script = ExtResource("1_l3fic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.054902, 0.054902, 0.054902, 1)
@@ -24,5 +27,8 @@ tile_set = ExtResource("3_ojoj0")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 65536, 1, 65536, 131072, 1, 65536, 196608, 1, 65536, 262144, 1, 65536, 327680, 1, 65536, 393216, 1, 65536, 458752, 1, 65536, 524288, 1, 65536, 589824, 1, 65536, 655360, 1, 65536, 720896, 1, 65536, 786432, 1, 65536, 851968, 1, 65536, 917504, 1, 65536, 983040, 1, 65536, 65565, 1, 65536, 131101, 1, 65536, 196637, 1, 65536, 262173, 1, 65536, 327709, 1, 65536, 393245, 1, 65536, 458781, 1, 65536, 524317, 1, 65536, 589853, 1, 65536, 655389, 1, 65536, 720925, 1, 65536, 786461, 1, 65536, 851997, 1, 65536, 917533, 1, 65536, 983069, 1, 65536)
 
-[node name="Player" parent="." instance=ExtResource("4_cukqa")]
+[node name="player" parent="." instance=ExtResource("4_cukqa")]
 position = Vector2(228, 181)
+
+[node name="rat" parent="." groups=["enemies"] instance=ExtResource("5_8gquo")]
+position = Vector2(1072, 602)

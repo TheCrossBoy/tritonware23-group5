@@ -39,3 +39,4 @@ func take_damage(damage):
 	$FlashAnimation.custom_play()
 	if health <=0:
 		queue_free()
+		get_tree().reload_current_scene()

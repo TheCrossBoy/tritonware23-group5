@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var speed = 70
-@export var health = 500
-@export var damage = 25
+@export var speed = 85
+@export var health = 350
+@export var damage = 50
 
 var player
 var is_ready = false
