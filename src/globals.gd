@@ -3,6 +3,7 @@ extends Node
 var current_level = 0
 var levels = [
 preload("res://src/levels/title_screen.tscn"), 
+preload("res://src/levels/controls_screen.tscn"),
 preload("res://src/levels/basement.tscn"), 
 preload("res://src/levels/attic.tscn"),
 preload("res://src/levels/finish_screen.tscn"), 
