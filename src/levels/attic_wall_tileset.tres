@@ -1,0 +1,65 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://k0xb3ri7yiiy"]
+
+[ext_resource type="Texture2D" uid="uid://bsslnxhes7ona" path="res://assets/assets_levels/attic-wall-tiles.png" id="1_qayje"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x37tg"]
+texture = ExtResource("1_qayje")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1 = 1
+0:0/1/transpose = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/2 = 2
+0:0/2/flip_h = true
+0:0/2/transpose = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/3 = 3
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/3/physics_layer_0/angular_velocity = 0.0
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/next_alternative_id = 4
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.075, -16, 16, -16, 16, 16, -2.2422, 16)
+2:0/1 = 1
+2:0/1/flip_h = true
+2:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/1/physics_layer_0/angular_velocity = 0.0
+2:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 1.945, -16, 1.98782, 16, -16, 16)
+3:0/next_alternative_id = 6
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.075, -16, 16, -16, 16, 16, -2.04874, 16)
+3:0/2 = 2
+3:0/2/flip_h = true
+3:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/2/physics_layer_0/angular_velocity = 0.0
+3:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 2.175, -16, 2.175, 16, -16, 16)
+3:0/4 = 4
+3:0/4/flip_v = true
+3:0/4/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/4/physics_layer_0/angular_velocity = 0.0
+3:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(-2.12566, -16, 16, -16, 16, 16, -2.075, 16)
+3:0/5 = 5
+3:0/5/flip_h = true
+3:0/5/flip_v = true
+3:0/5/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/5/physics_layer_0/angular_velocity = 0.0
+3:0/5/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 2.175, -16, 2.175, 16, -16, 16)
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 31
+physics_layer_0/collision_mask = 31
+sources/0 = SubResource("TileSetAtlasSource_x37tg")
