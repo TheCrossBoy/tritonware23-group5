@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtt4rcd271dg1"]
+[gd_scene load_steps=5 format=3 uid="uid://dtt4rcd271dg1"]
 
 [ext_resource type="Script" path="res://src/levels/title_screen.gd" id="1_dk1l8"]
 [ext_resource type="Texture2D" uid="uid://c2kppye1oc5rs" path="res://assets/assets_levels/title-screen.png" id="1_oh2jj"]
 [ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="2_jd361"]
+[ext_resource type="AudioStream" uid="uid://bs82vyn3io64g" path="res://assets/assets_music/The_Barrens.wav" id="4_0bhfy"]
 
 [node name="TitleScreen" type="Node2D"]
 position = Vector2(960, 540)
@@ -19,3 +20,7 @@ texture = ExtResource("2_jd361")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oh2jj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0bhfy")
+autoplay = true
