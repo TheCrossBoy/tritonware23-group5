@@ -11,3 +11,8 @@ func _process(delta):
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	if enemies.size() == 0:
 		globals.next_scene()
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()
+	

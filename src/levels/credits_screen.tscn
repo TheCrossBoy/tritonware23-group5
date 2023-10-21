@@ -70,4 +70,5 @@ label_settings = SubResource("LabelSettings_23ig1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_b1jey")
+volume_db = 6.0
 autoplay = true
