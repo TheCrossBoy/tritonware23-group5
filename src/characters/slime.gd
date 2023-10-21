@@ -2,8 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 70
 @export var health = 500
-@export var projectile_scene: PackedScene
-@export var projectile_speed = 300
+@export var damage = 25
 
 var player
 var is_ready = false
@@ -25,3 +24,8 @@ func take_damage(damage):
 	$FlashAnimation.custom_play()
 	if health <=0:
 		queue_free()
+
+
+func _on_area_2d_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(damage)

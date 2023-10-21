@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://burehh1iijg64"]
+[gd_scene load_steps=10 format=3 uid="uid://burehh1iijg64"]
 
 [ext_resource type="Script" path="res://src/characters/slime.gd" id="1_n475i"]
 [ext_resource type="Texture2D" uid="uid://dlc31k738kpbp" path="res://assets/assets_characters/slime-model-green.png" id="2_4dj13"]
@@ -16,8 +16,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_od7i6"]
-radius = 46.356
-height = 102.0
+radius = 47.0
+height = 106.0
 
 [sub_resource type="Animation" id="Animation_f8a4d"]
 length = 0.001
@@ -56,10 +56,13 @@ _data = {
 "moving": SubResource("Animation_pouwo")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omffb"]
+radius = 50.0
+height = 132.0
+
 [node name="slime" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_layer = 8
-collision_mask = 7
 script = ExtResource("1_n475i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -82,3 +85,12 @@ libraries = {
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="FlashAnimation" parent="." instance=ExtResource("3_eqbba")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_omffb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dmvrduxtk0kgu"]
+[gd_scene load_steps=41 format=3 uid="uid://dmvrduxtk0kgu"]
 
 [ext_resource type="Texture2D" uid="uid://dvvarqotby4jw" path="res://assets/assets_characters/rat-idle-spriteSheet.png" id="1_i5k4u"]
 [ext_resource type="Script" path="res://src/characters/rat.gd" id="1_vh7xp"]
@@ -248,14 +248,17 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_od7i6"]
-radius = 9.0
-height = 40.0
+radius = 8.5
+height = 35.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0sir"]
+radius = 9.5
+height = 38.0
 
 [node name="rat" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 scale = Vector2(2, 2)
 collision_layer = 4
-collision_mask = 11
 script = ExtResource("1_vh7xp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -273,3 +276,12 @@ shape = SubResource("CapsuleShape2D_od7i6")
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="FlashAnimation" parent="." instance=ExtResource("6_ii45g")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l0sir")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
