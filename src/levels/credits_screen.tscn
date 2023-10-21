@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://brn5amho1qnw6"]
+[gd_scene load_steps=8 format=3 uid="uid://brn5amho1qnw6"]
 
 [ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="2_tggwj"]
 [ext_resource type="Texture2D" uid="uid://do47id3pbw36p" path="res://assets/crown.png" id="3_kf7b1"]
+[ext_resource type="AudioStream" uid="uid://bs82vyn3io64g" path="res://assets/assets_music/The_Barrens.wav" id="4_b1jey"]
 [ext_resource type="FontFile" uid="uid://exh0csn432o8" path="res://assets/Xolonium-Regular.ttf" id="4_v1d8g"]
 
 [sub_resource type="GDScript" id="GDScript_upr0y"]
@@ -66,3 +67,7 @@ Programming: Jerry Ding, Josh Cross
 Music: Anderson Myers (Commander Frostbite)
 "
 label_settings = SubResource("LabelSettings_23ig1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b1jey")
+autoplay = true
