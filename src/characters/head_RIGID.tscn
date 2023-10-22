@@ -145,7 +145,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7o7w7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye8wa"]
 radius = 34.0
 
 [node name="HeadRigid" type="RigidBody2D"]
@@ -177,7 +177,7 @@ collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -24)
-shape = SubResource("CircleShape2D_7o7w7")
+shape = SubResource("CircleShape2D_ye8wa")
 
 [node name="HeadAttackTimer" type="Timer" parent="."]
 wait_time = 0.5
