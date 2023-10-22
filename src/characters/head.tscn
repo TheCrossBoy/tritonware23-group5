@@ -33,12 +33,12 @@ func _physics_process(delta):
 			health = max_health
 			attatched = false
 			
-			get_tree().get_root().get_child(1).get_node(\"HeadSpawner\").set_position(global_position)
+			get_parent().get_tree().get_root().get_child(1).get_node(\"HeadSpawner\").set_position(global_position)
 			var h = head_rigid.instantiate()
-			get_tree().get_root().get_child(1).get_node(\"HeadSpawner\").add_child(h)
+			get_parent().get_tree().get_root().get_child(1).get_node(\"HeadSpawner\").add_child(h)
 			var target_pos
 			target_pos = get_parent().position + head_radius * (get_viewport().get_mouse_position() - get_parent().position).normalized()
-			h.apply_impulse((target_pos - position).normalized()*700, Vector2())
+			h.apply_impulse((target_pos - position).normalized()*1500, Vector2())
 			
 		else:
 			# Start reattatching process

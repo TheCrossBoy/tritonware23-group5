@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3dsqccqq4id0"]
+[gd_scene load_steps=10 format=3 uid="uid://c3dsqccqq4id0"]
 
 [ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_h0erc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r86d8"]
+bounce = 0.8
 
 [sub_resource type="GDScript" id="GDScript_ut7nb"]
 script/source = "extends RigidBody2D
@@ -87,6 +90,9 @@ func _on_head_cooldown_timer_timeout():
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
+radius = 29.0172
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8jud"]
 atlas = ExtResource("2_h0erc")
 region = Rect2(0, 0, 32, 32)
@@ -138,13 +144,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
-radius = 29.0172
-
 [node name="HeadRigid" type="RigidBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 position = Vector2(-4, 0)
+collision_mask = 15
+mass = 6.0
+inertia = 0.5
+physics_material_override = SubResource("PhysicsMaterial_r86d8")
+linear_damp = 0.5
 script = SubResource("GDScript_ut7nb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_2u5pk")
 
 [node name="HeadCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
