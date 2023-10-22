@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp406a2cdlcrh"]
 
-[ext_resource type="Script" path="res://src/flash_animation.gd" id="1_eqwc6"]
+[ext_resource type="Script" path="res://src/objects/flash_animation.gd" id="1_eqwc6"]
 
 [sub_resource type="Animation" id="Animation_olop0"]
 length = 0.001

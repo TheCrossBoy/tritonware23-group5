@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
 [ext_resource type="Texture2D" uid="uid://bm5ausvribl0f" path="res://assets/assets_characters/Pumkin Body Sprite Sheet.png" id="3_d28js"]
-[ext_resource type="PackedScene" uid="uid://bp406a2cdlcrh" path="res://src/flash_animation.tscn" id="4_mwo3c"]
+[ext_resource type="PackedScene" uid="uid://bp406a2cdlcrh" path="res://src/objects/flash_animation.tscn" id="4_mwo3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50ppo"]
 atlas = ExtResource("3_d28js")
