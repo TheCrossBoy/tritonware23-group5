@@ -35,6 +35,12 @@ position = Vector2(228, 181)
 [node name="ghost" parent="." groups=["enemies"] instance=ExtResource("5_gfmaw")]
 position = Vector2(1095, 391)
 
+[node name="ghost2" parent="." groups=["enemies"] instance=ExtResource("5_gfmaw")]
+position = Vector2(1267, 718)
+
+[node name="ghost3" parent="." groups=["enemies"] instance=ExtResource("5_gfmaw")]
+position = Vector2(506, 768)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_wqaqd")
 volume_db = 6.0
