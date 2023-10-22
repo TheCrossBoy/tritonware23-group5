@@ -21,3 +21,6 @@ func _on_projectile_area_body_entered(body):
 		body.take_damage(damage)
 		queue_free()
 
+func block_attack():
+	print("block attack")
+	queue_free()

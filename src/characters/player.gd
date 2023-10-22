@@ -11,6 +11,7 @@ extends CharacterBody2D
 func _physics_process(delta):
 	# Handle Shooting
 	if Input.is_action_pressed("ui_select") && get_node("ShootTimer").is_stopped():
+		$FlashAnimation.custom_play()
 		get_node("ShootTimer").start()
 		var projectile = projectile_scene.instantiate()
 		projectile.position = position
@@ -39,4 +40,6 @@ func take_damage(damage):
 	$FlashAnimation.custom_play()
 	if health <=0:
 		queue_free()
-		get_tree().reload_current_scene()
+
+func _on_body_entered(body):
+	get_tree().reload_current_scene()
