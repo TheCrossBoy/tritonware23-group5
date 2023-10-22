@@ -39,7 +39,7 @@ func take_damage(damage):
 	health = health - damage
 	$FlashAnimation.custom_play()
 	if health <=0:
-		queue_free()
+		get_tree().reload_current_scene()
 
 func _on_body_entered(body):
 	get_tree().reload_current_scene()
