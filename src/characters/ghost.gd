@@ -11,6 +11,7 @@ var is_ready = false
 
 func _ready():
 	player = get_node("../player")
+	add_to_group("enemies")
 	is_ready = true
 
 func _physics_process(delta):

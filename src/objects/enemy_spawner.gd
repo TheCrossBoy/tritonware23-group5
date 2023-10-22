@@ -18,7 +18,8 @@ func _process(delta):
 func _on_small_timer_timeout():
 	if !$BigTimer.is_stopped():
 		var m = mob.instantiate()
+		get_parent().add_child(m)
 		m.global_position = global_position
-		get_tree().get_root().add_child(m)
+		#get_tree().get_root().add_child(m)
 		$BigTimer/SmallTimer.wait_time = randf_range(min_respawn_time, max_respawn_time)
 		$BigTimer/SmallTimer.start()
