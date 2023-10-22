@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ycwyh0877nty"]
+[gd_scene load_steps=12 format=3 uid="uid://ycwyh0877nty"]
 
 [ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="1_hb3id"]
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_l3fic"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://c0janoljubw2q" path="res://assets/assets_music/The_Barrens_TRIMMED.wav" id="7_yw58i"]
 [ext_resource type="PackedScene" uid="uid://clr766xxd31r0" path="res://src/characters/ghost.tscn" id="8_jivql"]
 [ext_resource type="PackedScene" uid="uid://b6yt531ymymho" path="res://src/objects/enemy_spawner.tscn" id="10_mdj7e"]
+[ext_resource type="PackedScene" uid="uid://dgs1dpdtyic4m" path="res://src/characters/head_spawner.tscn" id="11_d05oo"]
 
 [node name="Attic" type="Node2D"]
 script = ExtResource("1_l3fic")
@@ -66,5 +67,7 @@ mob = ExtResource("7_jaxfn")
 min_respawn_time = 8.0
 max_respawn_time = 9.0
 total_respawn_time = 45.0
+
+[node name="HeadSpawner" parent="." instance=ExtResource("11_d05oo")]
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
