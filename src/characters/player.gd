@@ -36,10 +36,9 @@ func _physics_process(delta):
 	
 func take_damage(damage):
 	health = health - damage
+	$FlashAnimation.custom_play()
 	if health <=0:
 		queue_free()
 
-
-
 func _on_body_entered(body):
-	pass # Replace with function body.
+	get_tree().reload_current_scene()

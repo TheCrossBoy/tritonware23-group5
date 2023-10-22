@@ -1,0 +1,44 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dtx63m7kc7olf"]
+
+[ext_resource type="Texture2D" uid="uid://dhad44888kgy6" path="res://assets/assets_levels/basement-wall-tiles - CORRECTED.png" id="1_15tvs"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3kue"]
+texture = ExtResource("1_15tvs")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1 = 1
+0:0/1/transpose = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/next_alternative_id = 4
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.07099, -16, 16, -16, 16, 16, -16, 16, -2.075, 16)
+2:0/1 = 1
+2:0/1/flip_h = true
+2:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/1/physics_layer_0/angular_velocity = 0.0
+2:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 2.00161, -16, 1.97548, 16, -16, 16)
+2:0/2 = 2
+2:0/2/transpose = true
+2:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/2/physics_layer_0/angular_velocity = 0.0
+2:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -1.97112, 16, -1.97112, 16, 16, -16, 16)
+2:0/3 = 3
+2:0/3/flip_v = true
+2:0/3/transpose = true
+2:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/3/physics_layer_0/angular_velocity = 0.0
+2:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 2.01402, -16, 2.01401)
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 31
+physics_layer_0/collision_mask = 31
+sources/1 = SubResource("TileSetAtlasSource_v3kue")

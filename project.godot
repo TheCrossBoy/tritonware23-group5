@@ -15,6 +15,10 @@ run/main_scene="res://src/test_world.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+globals="*res://src/globals.gd"
+
 [display]
 
 window/size/viewport_width=1920
