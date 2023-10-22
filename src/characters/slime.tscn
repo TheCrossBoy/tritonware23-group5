@@ -63,6 +63,7 @@ height = 132.0
 [node name="slime" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_layer = 8
+motion_mode = 1
 script = ExtResource("1_n475i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
