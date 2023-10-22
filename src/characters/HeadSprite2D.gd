@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var damage_per_second = 100
 @export var self_damage_on_hit = 20
 @export var snapback_damage = 1000
+@export var head_radius = 250
 
 func _physics_process(delta):
 	# Handle splitting head
@@ -21,7 +22,6 @@ func _physics_process(delta):
 			attatched = false
 		else:
 			# Start reattatching process
-			
 			attatched = true
 	
 	# Move towards target
@@ -30,13 +30,14 @@ func _physics_process(delta):
 		if attatched:
 			target_pos = get_parent().position
 		else:
-			target_pos = get_viewport().get_mouse_position()
+			target_pos = get_parent().position + head_radius * (get_viewport().get_mouse_position() - get_parent().position).normalized()
+			
 		if (target_pos - position).length() < speed * delta:
 			if attatched:
 				top_level = false
 				position = Vector2(0, 0)
 			else:
-				position = get_viewport().get_mouse_position()
+				position = target_pos
 		else:
 			position += (target_pos - position).normalized() * accel * delta * delta
 		
