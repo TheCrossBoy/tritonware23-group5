@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ycwyh0877nty"]
+[gd_scene load_steps=11 format=3 uid="uid://ycwyh0877nty"]
 
 [ext_resource type="Texture2D" uid="uid://3qa71s042cpl" path="res://assets/assets_levels/grey-screen.jpg" id="1_hb3id"]
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_l3fic"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://burehh1iijg64" path="res://src/characters/slime.tscn" id="7_jaxfn"]
 [ext_resource type="AudioStream" uid="uid://c0janoljubw2q" path="res://assets/assets_music/The_Barrens_TRIMMED.wav" id="7_yw58i"]
 [ext_resource type="PackedScene" uid="uid://clr766xxd31r0" path="res://src/characters/ghost.tscn" id="8_jivql"]
+[ext_resource type="PackedScene" uid="uid://b6yt531ymymho" path="res://src/objects/enemy_spawner.tscn" id="10_mdj7e"]
 
 [node name="Attic" type="Node2D"]
 script = ExtResource("1_l3fic")
@@ -36,24 +37,35 @@ position = Vector2(228, 181)
 [node name="rat" parent="." groups=["enemies"] instance=ExtResource("5_8gquo")]
 position = Vector2(1072, 602)
 
-[node name="rat2" parent="." groups=["enemies"] instance=ExtResource("5_8gquo")]
-position = Vector2(1387, 262)
-
 [node name="rat4" parent="." groups=["enemies"] instance=ExtResource("5_8gquo")]
 position = Vector2(1387, 262)
 
 [node name="rat3" parent="." groups=["enemies"] instance=ExtResource("5_8gquo")]
 position = Vector2(525, 707)
 
-[node name="slime" parent="." groups=["enemies"] instance=ExtResource("7_jaxfn")]
-position = Vector2(739, 540)
-
-[node name="ghost" parent="." groups=["enemies"] instance=ExtResource("8_jivql")]
-position = Vector2(1507, 887)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_yw58i")
 volume_db = 6.0
 autoplay = true
+
+[node name="RatSpawner" parent="." instance=ExtResource("10_mdj7e")]
+position = Vector2(1595, 495)
+mob = ExtResource("5_8gquo")
+min_respawn_time = 2.0
+total_respawn_time = 45.0
+
+[node name="GhostSpawner" parent="." instance=ExtResource("10_mdj7e")]
+position = Vector2(442, 909)
+mob = ExtResource("8_jivql")
+min_respawn_time = 4.0
+max_respawn_time = 7.0
+total_respawn_time = 45.0
+
+[node name="SlimeSpawner" parent="." instance=ExtResource("10_mdj7e")]
+position = Vector2(1016, 208)
+mob = ExtResource("7_jaxfn")
+min_respawn_time = 8.0
+max_respawn_time = 9.0
+total_respawn_time = 45.0
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

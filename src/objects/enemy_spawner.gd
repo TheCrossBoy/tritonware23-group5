@@ -2,12 +2,13 @@ extends Node2D
 
 @export var mob: PackedScene 
 @export var min_respawn_time = 3.0
-@export var max_respawn_time = 6.0
+@export var max_respawn_time = 3.0
 @export var total_respawn_time = 30.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BigTimer.wait_time = total_respawn_time
 	$BigTimer/SmallTimer.wait_time = max_respawn_time
+	$BigTimer/SmallTimer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

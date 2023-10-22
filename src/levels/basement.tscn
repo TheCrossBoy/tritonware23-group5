@@ -47,7 +47,7 @@ stream = ExtResource("7_wqaqd")
 volume_db = 6.0
 autoplay = true
 
-[node name="EnemySpawner" parent="." instance=ExtResource("8_g5xyu")]
+[node name="GhostSpawner" parent="." instance=ExtResource("8_g5xyu")]
 position = Vector2(928, 763)
 mob = ExtResource("5_gfmaw")
 
