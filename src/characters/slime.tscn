@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/characters/slime.gd" id="1_n475i"]
 [ext_resource type="Texture2D" uid="uid://dlc31k738kpbp" path="res://assets/assets_characters/slime-model-green.png" id="2_4dj13"]
-[ext_resource type="PackedScene" uid="uid://bp406a2cdlcrh" path="res://src/objects/flash_animation.tscn" id="3_eqbba"]
+[ext_resource type="PackedScene" path="res://src/objects/flash_animation.tscn" id="3_eqbba"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_khxu7"]
 animations = [{
