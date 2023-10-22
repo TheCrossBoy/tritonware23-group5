@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6ptppujnd5kc" path="res://assets/assets_characters/ratattackleft-Sheet.png" id="1_wg35p"]
 [ext_resource type="Texture2D" uid="uid://biagqflmqehf4" path="res://assets/assets_characters/rat-death-Sheet.png" id="2_2soap"]
 [ext_resource type="Texture2D" uid="uid://cjw7nie4yl6h" path="res://assets/assets_characters/rat-jumping-Sheet.png" id="4_pka7o"]
-[ext_resource type="PackedScene" uid="uid://bp406a2cdlcrh" path="res://src/objects/flash_animation.tscn" id="6_ii45g"]
+[ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="6_ii45g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bf7n"]
 atlas = ExtResource("1_wg35p")
@@ -259,6 +259,7 @@ height = 38.0
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 scale = Vector2(2.25, 2.25)
 collision_layer = 4
+motion_mode = 1
 script = ExtResource("1_vh7xp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
