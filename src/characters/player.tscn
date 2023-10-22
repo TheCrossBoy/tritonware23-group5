@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=20 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
-[ext_resource type="Texture2D" uid="uid://d4ha7vsr8n3ny" path="res://icon.svg" id="2_7hg43"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
 [ext_resource type="Texture2D" uid="uid://b7rm5a1rbqj53" path="res://assets/assets_characters/pumpkin-body.png" id="3_d28js"]
-[ext_resource type="PackedScene" path="res://src/objects/flash_animation.tscn" id="4_mwo3c"]
+[ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="4_mwo3c"]
 [ext_resource type="Script" path="res://src/characters/HeadSprite2D.gd" id="4_wmasi"]
+[ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="5_l1rb4"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_50ppo"]
 atlas = ExtResource("3_d28js")
 region = Rect2(35, 0, 35, 32)
@@ -63,7 +64,59 @@ animations = [{
 radius = 6.15385
 height = 16.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8jud"]
+atlas = ExtResource("5_l1rb4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxbn5"]
+atlas = ExtResource("5_l1rb4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apqth"]
+atlas = ExtResource("5_l1rb4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umf3q"]
+atlas = ExtResource("5_l1rb4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6yq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8jud")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxbn5")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apqth")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umf3q")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
+radius = 660.76
 
 [node name="Player" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
@@ -76,6 +129,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_b1kgi")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.288455
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -88,6 +142,8 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Head" type="CharacterBody2D" parent="."]
+modulate = Color(0.807843, 0.807843, 0.807843, 1)
+position = Vector2(-4, 0)
 scale = Vector2(0.05, 0.05)
 script = ExtResource("4_wmasi")
 
@@ -95,20 +151,26 @@ script = ExtResource("4_wmasi")
 wait_time = 5.0
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Head"]
-texture = ExtResource("4_rcjn6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head"]
+scale = Vector2(70, 70)
+sprite_frames = SubResource("SpriteFrames_f6yq6")
+animation = &"idle"
+frame_progress = 0.283152
 
 [node name="Area2D" type="Area2D" parent="Head"]
 collision_layer = 0
 collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
+position = Vector2(0, -460)
 shape = SubResource("CircleShape2D_2u5pk")
 
 [node name="HeadAttackTimer" type="Timer" parent="Head"]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="Head/Area2D" to="Head" method="_on_body_entered"]
+[node name="FlashAnimation" parent="Head" instance=ExtResource("4_mwo3c")]
 
 [node name="FlashAnimation" parent="." instance=ExtResource("4_mwo3c")]
+
+[connection signal="body_entered" from="Head/Area2D" to="Head" method="_on_body_entered"]

@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+@export var attatched_offset = Vector2(-4, 0)
+
 @export var attatched = true
 @export var speed = 1500
 @export var accel = 75000
 
+@export var max_health = 100
 @export var health = 100
 @export var damage_per_second = 100
 @export var self_damage_on_hit = 20
@@ -13,12 +16,13 @@ extends CharacterBody2D
 func _physics_process(delta):
 	# Handle splitting head
 	if Input.is_action_just_pressed("head_split") && get_node("HeadCooldownTimer").is_stopped():
+		
 		get_node("HeadCooldownTimer").start()
 		if attatched:
 			# Start detatching process
 			top_level = true
-			position = get_parent().position
-	
+			position = get_parent().position + attatched_offset
+			health = max_health
 			attatched = false
 		else:
 			# Start reattatching process
@@ -28,14 +32,14 @@ func _physics_process(delta):
 	if top_level:
 		var target_pos
 		if attatched:
-			target_pos = get_parent().position
+			target_pos = get_parent().position + attatched_offset
 		else:
 			target_pos = get_parent().position + head_radius * (get_viewport().get_mouse_position() - get_parent().position).normalized()
 			
 		if (target_pos - position).length() < speed * delta:
 			if attatched:
 				top_level = false
-				position = Vector2(0, 0)
+				position = attatched_offset
 			else:
 				position = target_pos
 		else:
@@ -65,8 +69,6 @@ func _process(delta):
 				body.block_attack()
 				self_damage()
 				get_node("HeadAttackTimer").start()
-	
-
 
 func _on_body_entered(body):
 	# Attatched but not yet back on our body, so do big damage
