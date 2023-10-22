@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_h0erc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r86d8"]
-bounce = 0.8
+friction = 0.5
+bounce = 0.85
 
 [sub_resource type="GDScript" id="GDScript_ut7nb"]
 script/source = "extends RigidBody2D
@@ -151,7 +152,7 @@ collision_mask = 15
 mass = 6.0
 inertia = 0.5
 physics_material_override = SubResource("PhysicsMaterial_r86d8")
-linear_damp = 0.5
+linear_damp = 0.3
 script = SubResource("GDScript_ut7nb")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
