@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://crs0bbvsc1b5l"]
+[gd_scene load_steps=8 format=3 uid="uid://crs0bbvsc1b5l"]
 
 [ext_resource type="PackedScene" uid="uid://cdpmpjrnwi5yj" path="res://src/characters/player.tscn" id="1_c4t2b"]
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_daqlv"]
@@ -7,7 +7,6 @@
 [ext_resource type="TileSet" uid="uid://k0xb3ri7yiiy" path="res://src/levels/attic_wall_tileset.tres" id="3_j1ori"]
 [ext_resource type="PackedScene" uid="uid://clr766xxd31r0" path="res://src/characters/ghost.tscn" id="5_gfmaw"]
 [ext_resource type="AudioStream" uid="uid://coo6765n5rbqh" path="res://assets/assets_music/Starlight_Horsemans_Perilous_Journey.mp3" id="7_wqaqd"]
-[ext_resource type="PackedScene" uid="uid://b6yt531ymymho" path="res://src/objects/enemy_spawner.tscn" id="8_ywc32"]
 
 [node name="Basement" type="Node2D"]
 script = ExtResource("1_daqlv")
@@ -46,8 +45,5 @@ position = Vector2(506, 768)
 stream = ExtResource("7_wqaqd")
 volume_db = 6.0
 autoplay = true
-
-[node name="EnemySpawner" parent="." instance=ExtResource("8_ywc32")]
-mob = ExtResource("5_gfmaw")
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
