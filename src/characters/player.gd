@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var accel = 7500
 @export var projectile_scene: PackedScene
 @export var projectile_speed = 600
+var head_rigid = preload("res://src/characters/head_RIGID.tscn")
 
 
 func _physics_process(delta):

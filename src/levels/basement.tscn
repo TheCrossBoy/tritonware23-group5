@@ -50,4 +50,6 @@ autoplay = true
 position = Vector2(928, 763)
 mob = ExtResource("5_gfmaw")
 
+[node name="HeadSpawner" type="Node2D" parent="."]
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

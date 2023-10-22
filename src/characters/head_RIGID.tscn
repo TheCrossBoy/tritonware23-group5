@@ -1,0 +1,171 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3dsqccqq4id0"]
+
+[ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_h0erc"]
+
+[sub_resource type="GDScript" id="GDScript_ut7nb"]
+script/source = "extends RigidBody2D
+
+@export var attatched_offset = Vector2(-4, 0)
+
+@export var attatched = true
+@export var speed = 1500
+@export var accel = 75000
+
+@export var max_health = 100
+@export var health = 100
+@export var damage_per_second = 100
+@export var self_damage_on_hit = 20
+@export var snapback_damage = 1000
+@export var head_radius = 250
+
+func _physics_process(delta):
+	# Handle splitting head
+	if Input.is_action_just_pressed(\"head_split\") && get_node(\"HeadCooldownTimer\").is_stopped():
+		
+		get_node(\"HeadCooldownTimer\").start()
+		$AnimatedSprite2D.modulate = Color(.8, .8, .8)
+		
+#		if attatched:
+#			# Start detatching process
+#			top_level = true
+#			position = get_parent().position + attatched_offset
+#			health = max_health
+#			attatched = false
+#		else:
+#			# Start reattatching process
+#			attatched = true
+#
+#	# Move towards target
+#	if top_level:
+#		var target_pos
+#		if attatched:
+#			target_pos = get_parent().position + attatched_offset
+#		else:
+#			target_pos = get_parent().position + head_radius * (get_viewport().get_mouse_position() - get_parent().position).normalized()
+#
+#		if (target_pos - position).length() < speed * delta:
+#			if attatched:
+#				top_level = false
+#				position = attatched_offset
+#			else:
+#				position = target_pos
+#		else:
+#			position += (target_pos - position).normalized() * accel * delta * delta
+		
+func self_damage():
+	health -= self_damage_on_hit
+	if health <= 0:
+		get_node(\"HeadCooldownTimer\").start()
+		attatched = true
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	# Unattatched, so do running around things
+	if not attatched and get_node(\"HeadAttackTimer\").is_stopped():
+		var collider = get_node(\"Area2D\")
+		if collider.has_overlapping_bodies():
+			var body = collider.get_overlapping_bodies()[0]
+			if body.has_method(\"take_damage\"):
+				body.take_damage(100 * get_node(\"HeadAttackTimer\").wait_time)
+				self_damage()
+				get_node(\"HeadAttackTimer\").start()
+		if collider.has_overlapping_areas():
+			var body = collider.get_overlapping_areas()[0].get_parent()
+			print(body)
+			if body.has_method(\"block_attack\"):
+				body.block_attack()
+				self_damage()
+				get_node(\"HeadAttackTimer\").start()
+
+func _on_body_entered(body):
+	# Attatched but not yet back on our body, so do big damage
+	if attatched and top_level and body.has_method(\"take_damage\"):
+		body.take_damage(snapback_damage)
+
+
+func _on_head_cooldown_timer_timeout():
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8jud"]
+atlas = ExtResource("2_h0erc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxbn5"]
+atlas = ExtResource("2_h0erc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apqth"]
+atlas = ExtResource("2_h0erc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umf3q"]
+atlas = ExtResource("2_h0erc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6yq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8jud")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxbn5")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apqth")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umf3q")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
+radius = 29.0172
+
+[node name="HeadRigid" type="RigidBody2D"]
+modulate = Color(0.807843, 0.807843, 0.807843, 1)
+position = Vector2(-4, 0)
+script = SubResource("GDScript_ut7nb")
+
+[node name="HeadCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_f6yq6")
+animation = &"idle"
+frame_progress = 0.283152
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_2u5pk")
+
+[node name="HeadAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="HeadCooldownTimer" to="." method="_on_head_cooldown_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
