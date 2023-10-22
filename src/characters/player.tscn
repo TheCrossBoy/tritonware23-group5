@@ -169,8 +169,7 @@ shape = SubResource("CircleShape2D_2u5pk")
 wait_time = 0.5
 one_shot = true
 
-[node name="FlashAnimation" parent="Head" instance=ExtResource("4_mwo3c")]
-
 [node name="FlashAnimation" parent="." instance=ExtResource("4_mwo3c")]
 
+[connection signal="timeout" from="Head/HeadCooldownTimer" to="Head" method="_on_head_cooldown_timer_timeout"]
 [connection signal="body_entered" from="Head/Area2D" to="Head" method="_on_body_entered"]

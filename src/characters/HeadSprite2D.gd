@@ -18,6 +18,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("head_split") && get_node("HeadCooldownTimer").is_stopped():
 		
 		get_node("HeadCooldownTimer").start()
+		$AnimatedSprite2D.modulate = Color(.8, .8, .8)
 		if attatched:
 			# Start detatching process
 			top_level = true
@@ -74,3 +75,7 @@ func _on_body_entered(body):
 	# Attatched but not yet back on our body, so do big damage
 	if attatched and top_level and body.has_method("take_damage"):
 		body.take_damage(snapback_damage)
+
+
+func _on_head_cooldown_timer_timeout():
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
