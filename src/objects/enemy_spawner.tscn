@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://b6yt531ymymho"]
+[gd_scene load_steps=2 format=3 uid="uid://b6yt531ymymho"]
+
+[ext_resource type="Script" path="res://src/objects/enemy_spawner.gd" id="1_v12t8"]
 
 [node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_v12t8")
+
+[node name="BigTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="SmallTimer" type="Timer" parent="BigTimer"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="BigTimer/SmallTimer" to="." method="_on_small_timer_timeout"]
