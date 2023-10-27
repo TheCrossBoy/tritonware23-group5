@@ -8,7 +8,7 @@
 [node name="bullet" type="CharacterBody2D"]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_pbhc8")
-damage = 15
+damage = 20
 
 [node name="projectile_area" type="Area2D" parent="."]
 collision_layer = 17

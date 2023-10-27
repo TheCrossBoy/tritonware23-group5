@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://crs0bbvsc1b5l"]
+[gd_scene load_steps=10 format=3 uid="uid://crs0bbvsc1b5l"]
 
 [ext_resource type="PackedScene" uid="uid://cdpmpjrnwi5yj" path="res://src/characters/player.tscn" id="1_c4t2b"]
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_daqlv"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://k0xb3ri7yiiy" path="res://src/levels/attic_wall_tileset.tres" id="3_j1ori"]
 [ext_resource type="PackedScene" uid="uid://clr766xxd31r0" path="res://src/characters/ghost.tscn" id="5_gfmaw"]
 [ext_resource type="AudioStream" uid="uid://coo6765n5rbqh" path="res://assets/assets_music/Starlight_Horsemans_Perilous_Journey.mp3" id="7_wqaqd"]
+[ext_resource type="PackedScene" uid="uid://burehh1iijg64" path="res://src/characters/slime.tscn" id="8_dd36k"]
 [ext_resource type="PackedScene" uid="uid://b6yt531ymymho" path="res://src/objects/enemy_spawner.tscn" id="8_g5xyu"]
 
 [node name="Basement" type="Node2D"]
@@ -46,6 +47,12 @@ autoplay = true
 [node name="GhostSpawner" parent="." instance=ExtResource("8_g5xyu")]
 position = Vector2(928, 763)
 mob = ExtResource("5_gfmaw")
+
+[node name="SlimeSpawner" parent="." instance=ExtResource("8_g5xyu")]
+position = Vector2(1641, 440)
+mob = ExtResource("8_dd36k")
+min_respawn_time = 8.0
+max_respawn_time = 9.0
 
 [node name="player" parent="." instance=ExtResource("1_c4t2b")]
 position = Vector2(415, 348)

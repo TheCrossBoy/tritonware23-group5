@@ -29,7 +29,16 @@ func _physics_process(delta):
 	var new_velocity = Vector2(0, 0)
 	new_velocity.x = Input.get_axis("ui_left", "ui_right")
 	new_velocity.y = Input.get_axis("ui_up", "ui_down")
-	
+	if new_velocity.x > 0:
+		$AnimatedSprite2D.play("right")
+	elif new_velocity.x < 0:
+		$AnimatedSprite2D.play("left")
+	elif new_velocity.y < 0:
+		$AnimatedSprite2D.play("down")
+	elif new_velocity.y > 0:
+		$AnimatedSprite2D.play("up")
+	else:
+		$AnimatedSprite2D.play("idle")
 	new_velocity = new_velocity.normalized() * speed
 	velocity = velocity.move_toward(new_velocity, accel*delta)
 	#velocity = new_velocity
