@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var damage = 50
+@export var damage = 35
 
 
 func _physics_process(delta):

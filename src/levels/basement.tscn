@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crs0bbvsc1b5l"]
+[gd_scene load_steps=11 format=3 uid="uid://crs0bbvsc1b5l"]
 
 [ext_resource type="PackedScene" uid="uid://cdpmpjrnwi5yj" path="res://src/characters/player.tscn" id="1_c4t2b"]
 [ext_resource type="Script" path="res://src/levels/level.gd" id="1_daqlv"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://cdj0kp21hwojb" path="res://src/levels/basement_floor_tileset.tres" id="2_sqvgy"]
 [ext_resource type="TileSet" uid="uid://k0xb3ri7yiiy" path="res://src/levels/attic_wall_tileset.tres" id="3_j1ori"]
 [ext_resource type="PackedScene" uid="uid://clr766xxd31r0" path="res://src/characters/ghost.tscn" id="5_gfmaw"]
+[ext_resource type="Script" path="res://src/levels/wall.gd" id="5_l1glh"]
 [ext_resource type="AudioStream" uid="uid://coo6765n5rbqh" path="res://assets/assets_music/Starlight_Horsemans_Perilous_Journey.mp3" id="7_wqaqd"]
 [ext_resource type="PackedScene" uid="uid://burehh1iijg64" path="res://src/characters/slime.tscn" id="8_dd36k"]
 [ext_resource type="PackedScene" uid="uid://b6yt531ymymho" path="res://src/objects/enemy_spawner.tscn" id="8_g5xyu"]
@@ -30,6 +31,7 @@ scale = Vector2(2, 2)
 tile_set = ExtResource("3_j1ori")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 196608, 262144, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 196608, 327680, 1048576, 196608, 0, 1048577, 0, 196608, 1048578, 0, 196608, 1048579, 0, 196608, 1048580, 0, 196608, 1048581, 0, 196608, 1048582, 0, 196608, 1048583, 0, 196608, 1048584, 0, 196608, 1048585, 0, 196608, 1048586, 0, 196608, 1048587, 0, 196608, 1048588, 0, 196608, 1048589, 0, 196608, 1048590, 0, 196608, 1048591, 0, 196608, 1048592, 0, 196608, 1048593, 0, 196608, 1048594, 0, 196608, 1048595, 0, 196608, 1048596, 0, 196608, 1048597, 0, 196608, 1048598, 0, 196608, 1048599, 0, 196608, 1048600, 0, 196608, 1048601, 0, 196608, 1048602, 0, 196608, 1048603, 0, 196608, 1048604, 0, 196608, 1048605, 196608, 131072, 65536, 131072, 0, 131072, 131072, 0, 196608, 131072, 0, 262144, 131072, 0, 327680, 131072, 0, 393216, 131072, 0, 458752, 131072, 0, 524288, 131072, 0, 589824, 131072, 0, 655360, 131072, 0, 720896, 131072, 0, 786432, 131072, 0, 851968, 131072, 0, 917504, 131072, 0, 983040, 131072, 0, 65565, 131072, 65536, 131101, 131072, 65536, 196637, 131072, 65536, 262173, 131072, 65536, 327709, 131072, 65536, 393245, 131072, 65536, 458781, 131072, 65536, 524317, 131072, 65536, 589853, 131072, 65536, 655389, 131072, 65536, 720925, 131072, 65536, 786461, 131072, 65536, 851997, 131072, 65536, 917533, 131072, 65536, 983069, 131072, 65536)
+script = ExtResource("5_l1glh")
 
 [node name="ghost" parent="." groups=["enemies"] instance=ExtResource("5_gfmaw")]
 position = Vector2(1095, 391)

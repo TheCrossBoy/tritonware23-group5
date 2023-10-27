@@ -26,6 +26,7 @@ signal head_dead
 var current_health = health
 func _ready():
 	$AnimatedSprite2D.modulate = Color(.8, .8, .8)
+	set_collision_mask_value(1, false)
 func _physics_process(delta):
 	# Handle splitting head
 	if get_node(\"HeadCooldownTimer\").is_stopped():
@@ -68,6 +69,10 @@ func _on_body_entered(body):
 
 func _on_head_cooldown_timer_timeout():
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+
+
+func _on_head_attack_timer_timeout():
+	set_collision_mask_value(1, true)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
@@ -141,7 +146,7 @@ script = SubResource("GDScript_mw87b")
 shape = SubResource("CircleShape2D_2u5pk")
 
 [node name="HeadCooldownTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 autostart = true
 
@@ -159,9 +164,10 @@ collision_mask = 30
 shape = SubResource("CircleShape2D_ye8wa")
 
 [node name="HeadAttackTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.05
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HeadCooldownTimer" to="." method="_on_head_cooldown_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="timeout" from="HeadAttackTimer" to="." method="_on_head_attack_timer_timeout"]

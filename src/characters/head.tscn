@@ -64,7 +64,7 @@ script = ExtResource("1_xt1rq")
 attatched_offset = Vector2(0, -33)
 
 [node name="HeadCooldownTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var health = 100
 @export var damage_per_second = 100
 @export var self_damage_on_hit = 20
-@export var snapback_damage = 30
+@export var snapback_damage = 50
 @export var head_radius = 250
 
 var head_rigid = preload("res://src/characters/head_RIGID.tscn")
