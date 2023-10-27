@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_h0erc"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r86d8"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sdch3"]
 friction = 0.5
 bounce = 0.85
 
-[sub_resource type="GDScript" id="GDScript_ut7nb"]
+[sub_resource type="GDScript" id="GDScript_mw87b"]
 script/source = "extends RigidBody2D
 
 @export var attatched_offset = Vector2(-4, 0)
@@ -16,66 +16,45 @@ script/source = "extends RigidBody2D
 @export var accel = 75000
 
 @export var max_health = 100
-@export var health = 100
+@export var health = 50
 @export var damage_per_second = 100
 @export var self_damage_on_hit = 20
-@export var snapback_damage = 1000
+@export var snapback_damage = 50
 @export var head_radius = 250
 
+signal head_dead
+var current_health = health
+func _ready():
+	$AnimatedSprite2D.modulate = Color(.8, .8, .8)
 func _physics_process(delta):
 	# Handle splitting head
-	if Input.is_action_just_pressed(\"head_split\") && get_node(\"HeadCooldownTimer\").is_stopped():
+	if get_node(\"HeadCooldownTimer\").is_stopped():
 		
-		get_node(\"HeadCooldownTimer\").start()
-		$AnimatedSprite2D.modulate = Color(.8, .8, .8)
-		
-#		if attatched:
-#			# Start detatching process
-#			top_level = true
-#			position = get_parent().position + attatched_offset
-#			health = max_health
-#			attatched = false
-#		else:
-#			# Start reattatching process
-#			attatched = true
-#
-#	# Move towards target
-#	if top_level:
-#		var target_pos
-#		if attatched:
-#			target_pos = get_parent().position + attatched_offset
-#		else:
-#			target_pos = get_parent().position + head_radius * (get_viewport().get_mouse_position() - get_parent().position).normalized()
-#
-#		if (target_pos - position).length() < speed * delta:
-#			if attatched:
-#				top_level = false
-#				position = attatched_offset
-#			else:
-#				position = target_pos
-#		else:
-#			position += (target_pos - position).normalized() * accel * delta * delta
+		$AnimatedSprite2D.modulate = Color(1, 1, 1)
+
 		
 func self_damage():
-	health -= self_damage_on_hit
-	if health <= 0:
-		get_node(\"HeadCooldownTimer\").start()
-		attatched = true
+	current_health -= self_damage_on_hit
+	if current_health <= 0:
+		head_dead.emit()
+	current_health = health 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Unattatched, so do running around things
-	if not attatched and get_node(\"HeadAttackTimer\").is_stopped():
-		var collider = get_node(\"Area2D\")
-		if collider.has_overlapping_bodies():
-			var body = collider.get_overlapping_bodies()[0]
-			if body.has_method(\"take_damage\"):
-				body.take_damage(100 * get_node(\"HeadAttackTimer\").wait_time)
-				self_damage()
-				get_node(\"HeadAttackTimer\").start()
-		if collider.has_overlapping_areas():
-			var body = collider.get_overlapping_areas()[0].get_parent()
-			print(body)
+	#if not attatched and get_node(\"HeadAttackTimer\").is_stopped():
+	var collider = get_node(\"Area2D\")
+	if collider.has_overlapping_bodies():
+		var body = collider.get_overlapping_bodies().pop_front()
+		if body and body.has_method(\"take_damage\"):
+			body.take_damage(100 * get_node(\"HeadAttackTimer\").wait_time)
+			self_damage()
+			get_node(\"HeadAttackTimer\").start()
+	if collider.has_overlapping_areas():
+		var body = collider.get_overlapping_areas().pop_front()
+		if body:
+			body = body.get_parent()
+		#print(body)
 			if body.has_method(\"block_attack\"):
 				body.block_attack()
 				self_damage()
@@ -83,7 +62,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	# Attatched but not yet back on our body, so do big damage
-	if attatched and top_level and body.has_method(\"take_damage\"):
+	if body.has_method(\"take_damage\"):
 		body.take_damage(snapback_damage)
 
 
@@ -154,9 +133,9 @@ position = Vector2(-4, 0)
 collision_mask = 15
 mass = 6.0
 inertia = 0.5
-physics_material_override = SubResource("PhysicsMaterial_r86d8")
+physics_material_override = SubResource("PhysicsMaterial_sdch3")
 linear_damp = 0.3
-script = SubResource("GDScript_ut7nb")
+script = SubResource("GDScript_mw87b")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -24)
@@ -165,6 +144,7 @@ shape = SubResource("CircleShape2D_2u5pk")
 [node name="HeadCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3.5, 3.5)
@@ -183,5 +163,6 @@ shape = SubResource("CircleShape2D_ye8wa")
 wait_time = 0.5
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HeadCooldownTimer" to="." method="_on_head_cooldown_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

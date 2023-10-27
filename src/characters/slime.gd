@@ -20,8 +20,8 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = false
 	move_and_slide()
 
-func take_damage(damage):
-	health = health - damage
+func take_damage(dmg):
+	health = health - dmg
 	$FlashAnimation.custom_play()
 	if health <=0:
 		queue_free()

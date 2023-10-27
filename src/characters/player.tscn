@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=14 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
 [ext_resource type="Texture2D" uid="uid://b7rm5a1rbqj53" path="res://assets/assets_characters/pumpkin-body.png" id="3_d28js"]
+[ext_resource type="PackedScene" uid="uid://dgs1dpdtyic4m" path="res://src/characters/head_spawner.tscn" id="4_8607u"]
 [ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="4_mwo3c"]
 [ext_resource type="PackedScene" uid="uid://sd3esg30r6if" path="res://src/characters/head.tscn" id="4_newol"]
 
@@ -63,7 +64,7 @@ animations = [{
 radius = 6.15385
 height = 16.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_mask = 14
 script = ExtResource("1_mxcia")
@@ -87,5 +88,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Head" parent="." instance=ExtResource("4_newol")]
+
+[node name="HeadSpawner" parent="." instance=ExtResource("4_8607u")]
 
 [node name="FlashAnimation" parent="." instance=ExtResource("4_mwo3c")]
