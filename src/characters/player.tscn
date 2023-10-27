@@ -15,9 +15,9 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("3_d28js")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpkvy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nov3x"]
 atlas = ExtResource("3_d28js")
-region = Rect2(0, 0, 35, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dps42"]
 atlas = ExtResource("3_d28js")
@@ -58,7 +58,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fpkvy")
+"texture": SubResource("AtlasTexture_nov3x")
 }],
 "loop": true,
 "name": &"idle",
@@ -104,14 +104,14 @@ height = 16.0
 
 [node name="player" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
-collision_mask = 14
+collision_mask = 254
 script = ExtResource("1_mxcia")
 projectile_scene = ExtResource("2_rbwar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_b1kgi")
-animation = &"up"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -125,6 +125,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Head" parent="." instance=ExtResource("4_newol")]
+position = Vector2(0, -39)
 
 [node name="HeadSpawner" parent="." instance=ExtResource("4_8607u")]
 

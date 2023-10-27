@@ -259,6 +259,7 @@ height = 38.0
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 scale = Vector2(2.25, 2.25)
 collision_layer = 4
+collision_mask = 129
 motion_mode = 1
 script = ExtResource("1_vh7xp")
 

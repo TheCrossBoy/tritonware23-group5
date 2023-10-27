@@ -15,7 +15,7 @@ func _physics_process(delta):
 		#$FlashAnimation.custom_play()
 		get_node("ShootTimer").start()
 		var projectile = projectile_scene.instantiate()
-		projectile.position = position
+		projectile.position = position + Vector2(0, -10)
 		projectile.velocity = Vector2(0, 0).move_toward(get_viewport().get_mouse_position() - position, projectile_speed).normalized() * projectile_speed
 		projectile.look_at(get_viewport().get_mouse_position())
 		get_tree().get_root().add_child(projectile)

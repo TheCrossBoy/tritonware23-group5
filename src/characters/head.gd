@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var attatched_offset = Vector2(-4, 0)
+@export var attatched_offset = Vector2(0, -40)
 @export var speed = 1500
 @export var accel = 75000
 
@@ -15,7 +15,8 @@ var head_rigid = preload("res://src/characters/head_RIGID.tscn")
 var h
 var head_state = 0
 #0 is attatched, 1 is free moving, 2 is reattaching
-
+func _ready():
+	position = attatched_offset
 func _physics_process(delta):
 	# Handle splitting head
 	if Input.is_action_just_pressed("head_split") && get_node("HeadCooldownTimer").is_stopped():
@@ -43,7 +44,8 @@ func _physics_process(delta):
 			get_parent().get_node("HeadSpawner").add_child(h)
 			var target_pos
 			target_pos = get_viewport().get_mouse_position()
-			h.apply_impulse((target_pos - position).normalized()*1500, Vector2(0, 0)) #get a little spin on that boi too
+			h.apply_impulse((target_pos - global_position).normalized()*1500, Vector2()) 
+			h.apply_torque_impulse(100) #get a little spin on that boi too
 			visible = false #HIDE CHARACTERBODY HEAD
 	
 	# Move towards target

@@ -59,9 +59,9 @@ radius = 660.76
 
 [node name="Head" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
-position = Vector2(-4, 0)
 scale = Vector2(0.05, 0.05)
 script = ExtResource("1_xt1rq")
+attatched_offset = Vector2(0, -33)
 
 [node name="HeadCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -72,12 +72,13 @@ scale = Vector2(70, 70)
 sprite_frames = SubResource("SpriteFrames_f6yq6")
 animation = &"idle"
 frame_progress = 0.283152
+offset = Vector2(0, 7)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -460)
+visible = false
 shape = SubResource("CircleShape2D_2u5pk")
 
 [node name="HeadAttackTimer" type="Timer" parent="."]
