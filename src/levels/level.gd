@@ -12,7 +12,3 @@ func _process(delta):
 	if enemies.size() == 0:
 		globals.next_scene()
 
-
-func _on_audio_stream_player_finished():
-	$AudioStreamPlayer.play()
-	

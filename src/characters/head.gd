@@ -30,6 +30,7 @@ func _physics_process(delta):
 			position = h.global_position
 			h.queue_free()
 			visible = true
+			$Retract.play()
 		elif head_state == 0 :
 			# Start detatching process
 			top_level = true
@@ -47,6 +48,7 @@ func _physics_process(delta):
 			h.apply_impulse((target_pos - global_position).normalized()*1500, Vector2()) 
 			h.apply_torque_impulse(100) #get a little spin on that boi too
 			visible = false #HIDE CHARACTERBODY HEAD
+			$Launch.play()
 	
 	# Move towards target
 	if top_level:

@@ -19,7 +19,7 @@ func _physics_process(delta):
 		projectile.velocity = Vector2(0, 0).move_toward(get_viewport().get_mouse_position() - position, projectile_speed).normalized() * projectile_speed
 		projectile.look_at(get_viewport().get_mouse_position())
 		get_tree().get_root().add_child(projectile)
-		
+		$ShootSound.play()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	

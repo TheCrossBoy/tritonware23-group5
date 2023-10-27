@@ -25,6 +25,7 @@ func _physics_process(delta):
 func take_damage(dmg):
 	health = health - dmg
 	$FlashAnimation.custom_play()
+	$Damage.play()
 	if health <=0:
 		queue_free()
 
@@ -39,3 +40,7 @@ func _on_attack_timer_timeout():
 func _on_area_2d_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
+
+
+func _on_woowah_finished():
+	$Woowah.play()

@@ -30,3 +30,7 @@ func take_damage(dmg):
 func _on_area_2d_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
+
+
+func _on_glop_finished():
+	$Glop.play()
