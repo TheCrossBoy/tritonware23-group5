@@ -19,7 +19,7 @@ script/source = "extends RigidBody2D
 @export var health = 50
 @export var damage_per_second = 100
 @export var self_damage_on_hit = 20
-@export var snapback_damage = 50
+@export var snapback_damage = 60
 @export var head_radius = 250
 
 signal head_dead

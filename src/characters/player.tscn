@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=20 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="4_mwo3c"]
 [ext_resource type="PackedScene" uid="uid://sd3esg30r6if" path="res://src/characters/head.tscn" id="4_newol"]
 [ext_resource type="AudioStream" uid="uid://bdxf63434eqyf" path="res://assets/assets_sfx/pop-sound_deraj.wav" id="7_sk3qg"]
+[ext_resource type="Texture2D" uid="uid://37qe4owywnmr" path="res://assets/assets_characters/healthbar.png" id="8_fcpbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3auf"]
 atlas = ExtResource("3_d28js")
@@ -134,6 +135,14 @@ position = Vector2(0, -39)
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_sk3qg")
+volume_db = -4.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -51.0
+offset_top = -88.0
+offset_right = 50.0
+offset_bottom = -48.0
+texture_progress = ExtResource("8_fcpbq")

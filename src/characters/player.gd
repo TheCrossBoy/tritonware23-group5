@@ -8,7 +8,8 @@ extends CharacterBody2D
 @export var projectile_speed = 600
 var head_rigid = preload("res://src/characters/head_RIGID.tscn")
 
-
+func _ready():
+	$TextureProgressBar.set_value(100)
 func _physics_process(delta):
 	# Handle Shooting
 	if Input.is_action_pressed("ui_select") && get_node("ShootTimer").is_stopped():
@@ -48,6 +49,7 @@ func _physics_process(delta):
 func take_damage(damage):
 	health = health - damage
 	$FlashAnimation.custom_play()
+	$TextureProgressBar.set_value(health)
 	if health <=0:
 		get_tree().reload_current_scene()
 

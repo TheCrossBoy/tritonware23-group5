@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/characters/head.gd" id="1_xt1rq"]
 [ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_sy7de"]
 [ext_resource type="AudioStream" uid="uid://c2d813lm0jj14" path="res://assets/assets_sfx/large explosion EQ.wav" id="3_qk40w"]
-[ext_resource type="AudioStream" uid="uid://da761807k84h2" path="res://assets/assets_sfx/rising-synth-SHORT.wav" id="4_ylw3b"]
+[ext_resource type="AudioStream" uid="uid://coipdcii1hj2p" path="res://assets/assets_sfx/rising-synth-SHORT-SHORT.wav" id="4_cfeel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8jud"]
 atlas = ExtResource("2_sy7de")
@@ -92,7 +92,7 @@ stream = ExtResource("3_qk40w")
 volume_db = 6.0
 
 [node name="Retract" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ylw3b")
+stream = ExtResource("4_cfeel")
 volume_db = -3.0
 
 [connection signal="timeout" from="HeadCooldownTimer" to="." method="_on_head_cooldown_timer_timeout"]

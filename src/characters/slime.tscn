@@ -67,6 +67,7 @@ collision_layer = 8
 collision_mask = 129
 motion_mode = 1
 script = ExtResource("1_n475i")
+speed = 90
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -98,7 +99,7 @@ shape = SubResource("CapsuleShape2D_omffb")
 
 [node name="Glop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_g4fad")
-volume_db = 14.0
+volume_db = 16.0
 autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
