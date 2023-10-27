@@ -130,11 +130,11 @@ radius = 34.0
 [node name="HeadRigid" type="RigidBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_layer = 128
-collision_mask = 31
+collision_mask = 127
 mass = 6.0
 inertia = 0.5
 physics_material_override = SubResource("PhysicsMaterial_sdch3")
-linear_damp = 0.2
+linear_damp = 0.3
 script = SubResource("GDScript_mw87b")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w60qd"]
 
 [node name="bullet" type="CharacterBody2D"]
-scale = Vector2(1.8, 1.8)
+scale = Vector2(2, 2)
 script = ExtResource("1_pbhc8")
 damage = 20
 

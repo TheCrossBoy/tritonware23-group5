@@ -104,7 +104,7 @@ height = 16.0
 
 [node name="player" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
-collision_mask = 254
+collision_mask = 126
 script = ExtResource("1_mxcia")
 projectile_scene = ExtResource("2_rbwar")
 
