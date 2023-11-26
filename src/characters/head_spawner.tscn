@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dgs1dpdtyic4m"]
+
+[node name="HeadSpawner" type="Node2D"]
+top_level = true

@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://sd3esg30r6if"]
+
+[ext_resource type="Script" path="res://src/characters/head.gd" id="1_xt1rq"]
+[ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_sy7de"]
+[ext_resource type="AudioStream" uid="uid://c2d813lm0jj14" path="res://assets/assets_sfx/large explosion EQ.wav" id="3_qk40w"]
+[ext_resource type="AudioStream" uid="uid://coipdcii1hj2p" path="res://assets/assets_sfx/rising-synth-SHORT-SHORT.wav" id="4_cfeel"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8jud"]
+atlas = ExtResource("2_sy7de")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxbn5"]
+atlas = ExtResource("2_sy7de")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apqth"]
+atlas = ExtResource("2_sy7de")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umf3q"]
+atlas = ExtResource("2_sy7de")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6yq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8jud")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxbn5")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apqth")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umf3q")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u5pk"]
+radius = 660.76
+
+[node name="Head" type="CharacterBody2D"]
+modulate = Color(0.807843, 0.807843, 0.807843, 1)
+scale = Vector2(0.05, 0.05)
+script = ExtResource("1_xt1rq")
+attatched_offset = Vector2(0, -33)
+
+[node name="HeadCooldownTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(70, 70)
+sprite_frames = SubResource("SpriteFrames_f6yq6")
+animation = &"idle"
+frame_progress = 0.283152
+offset = Vector2(0, 7)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_2u5pk")
+
+[node name="HeadAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Launch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qk40w")
+volume_db = 6.0
+
+[node name="Retract" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cfeel")
+volume_db = -3.0
+
+[connection signal="timeout" from="HeadCooldownTimer" to="." method="_on_head_cooldown_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

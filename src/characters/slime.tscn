@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://burehh1iijg64"]
+[gd_scene load_steps=11 format=3 uid="uid://burehh1iijg64"]
 
 [ext_resource type="Script" path="res://src/characters/slime.gd" id="1_n475i"]
 [ext_resource type="Texture2D" uid="uid://dlc31k738kpbp" path="res://assets/assets_characters/slime-model-green.png" id="2_4dj13"]
 [ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="3_eqbba"]
+[ext_resource type="AudioStream" uid="uid://cmgfeknx7u80e" path="res://assets/assets_sfx/slimy-pasta-stir_duckduckpony.wav" id="4_g4fad"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_khxu7"]
 animations = [{
@@ -63,8 +64,10 @@ height = 132.0
 [node name="slime" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_layer = 8
+collision_mask = 129
 motion_mode = 1
 script = ExtResource("1_n475i")
+speed = 90
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -94,4 +97,10 @@ position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_omffb")
 
+[node name="Glop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_g4fad")
+volume_db = 16.0
+autoplay = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="Glop" to="." method="_on_glop_finished"]

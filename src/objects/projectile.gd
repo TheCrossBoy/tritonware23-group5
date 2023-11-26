@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var damage = 50
+@export var damage = 35
 
 
 func _physics_process(delta):
@@ -24,3 +24,7 @@ func _on_projectile_area_body_entered(body):
 func block_attack():
 	print("block attack")
 	queue_free()
+
+
+func _on_buzz_finished():
+	$Buzz.play()
