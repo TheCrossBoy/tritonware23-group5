@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm3hpc2hfe0me"]
+[gd_scene load_steps=7 format=3 uid="uid://bm3hpc2hfe0me"]
 
 [ext_resource type="Script" path="res://src/objects/projectile.gd" id="1_7b4g4"]
 [ext_resource type="Texture2D" uid="uid://4hcidyyt11dy" path="res://assets/assets_characters/temp_plasma.png" id="1_xqrnu"]
@@ -6,6 +6,16 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6udh"]
 radius = 29.0172
+
+[sub_resource type="Gradient" id="Gradient_eihpb"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4gytr"]
+gradient = SubResource("Gradient_eihpb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.759799, 0.10201)
 
 [node name="plasma_ball" type="CharacterBody2D"]
 script = ExtResource("1_7b4g4")
@@ -24,6 +34,16 @@ shape = SubResource("CircleShape2D_c6udh")
 stream = ExtResource("3_y134n")
 volume_db = -24.0
 autoplay = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+scale = Vector2(3, 3)
+color = Color(0.25098, 0.921569, 0.976471, 1)
+range_z_max = 0
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 6.0
+texture = SubResource("GradientTexture2D_4gytr")
 
 [connection signal="body_entered" from="projectile_area" to="." method="_on_projectile_area_body_entered"]
 [connection signal="finished" from="Buzz" to="." method="_on_buzz_finished"]

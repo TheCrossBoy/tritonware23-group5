@@ -59,4 +59,10 @@ max_respawn_time = 9.0
 [node name="player" parent="." instance=ExtResource("1_c4t2b")]
 position = Vector2(308, 416)
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.733333, 0.74902, 0.721569, 1)
+energy = 0.6
+blend_mode = 1
+range_z_max = 1
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdpmpjrnwi5yj"]
+[gd_scene load_steps=23 format=3 uid="uid://cdpmpjrnwi5yj"]
 
 [ext_resource type="Script" path="res://src/characters/player.gd" id="1_mxcia"]
 [ext_resource type="PackedScene" uid="uid://douwu263wf2o3" path="res://src/objects/bullet.tscn" id="2_rbwar"]
@@ -104,6 +104,19 @@ animations = [{
 radius = 6.15385
 height = 16.0
 
+[sub_resource type="Gradient" id="Gradient_k170q"]
+offsets = PackedFloat32Array(0, 0.0657139, 0.851428)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.0442854, 0.0442854, 0.0442854, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1qolo"]
+gradient = SubResource("Gradient_k170q")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.302512, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_msqf4"]
+polygon = PackedVector2Array(-1, -71, -32, -63, -43, -39, -38, -25, -28, -11, -39, 19, -32, 61, 34, 62, 40, 20, 27, -9, 41, -29, 44, -40, 35, -61)
+
 [node name="player" type="CharacterBody2D"]
 modulate = Color(0.807843, 0.807843, 0.807843, 1)
 collision_mask = 126
@@ -146,3 +159,14 @@ offset_top = -88.0
 offset_right = 50.0
 offset_bottom = -48.0
 texture_progress = ExtResource("8_fcpbq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+position = Vector2(0, -2)
+scale = Vector2(3, 3.40625)
+color = Color(0.937255, 0.694118, 0.568627, 1)
+energy = 0.6
+texture = SubResource("GradientTexture2D_1qolo")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_msqf4")
