@@ -1,12 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://clr766xxd31r0"]
+[gd_scene load_steps=28 format=3 uid="uid://clr766xxd31r0"]
 
 [ext_resource type="Texture2D" uid="uid://dmbj81qyy12xc" path="res://assets/assets_characters/ghost.png" id="1_hymtf"]
 [ext_resource type="Script" path="res://src/characters/ghost.gd" id="1_me11j"]
 [ext_resource type="PackedScene" uid="uid://bm3hpc2hfe0me" path="res://src/objects/plasma_ball.tscn" id="2_1ho0t"]
 [ext_resource type="Texture2D" uid="uid://cndpi8ybssbf" path="res://assets/assets_characters/ghosty-Sheet.png" id="3_xs1p4"]
 [ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="5_g6uxs"]
-[ext_resource type="AudioStream" uid="uid://du364ygclrbr3" path="res://assets/assets_sfx/sad-ghost-01_matrixxx.wav" id="6_klawn"]
-[ext_resource type="AudioStream" uid="uid://cwgwxggdqqm8w" path="res://assets/assets_sfx/radiointerferencestatic-recorded-from-ghetto-blaster-harveyjnz.wav" id="7_dupxo"]
 [ext_resource type="AudioStream" uid="uid://1ehg10s78w84" path="res://assets/assets_sfx/clippers_on_startowerstudio - FADED.wav" id="8_bepsa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i8mpi"]
@@ -187,12 +185,10 @@ position = Vector2(-1.33333, 0)
 shape = SubResource("CapsuleShape2D_ym6cl")
 
 [node name="Woowah" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_klawn")
 volume_db = -12.0
 autoplay = true
 
 [node name="Damage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_dupxo")
 volume_db = 18.0
 
 [node name="Launch" type="AudioStreamPlayer2D" parent="."]

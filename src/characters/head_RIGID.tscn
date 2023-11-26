@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3dsqccqq4id0"]
+[gd_scene load_steps=12 format=3 uid="uid://c3dsqccqq4id0"]
 
 [ext_resource type="Texture2D" uid="uid://dioqjw0jykt1g" path="res://assets/assets_characters/pumpkin-head.png" id="2_h0erc"]
+[ext_resource type="AudioStream" uid="uid://bq6bkwk6wxv8h" path="res://assets/assets_sfx/Baseball Bat 1.mp3" id="2_xh7bi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sdch3"]
 friction = 0.5
@@ -65,6 +66,7 @@ func _on_body_entered(body):
 	# Attatched but not yet back on our body, so do big damage
 	if body.has_method(\"take_damage\"):
 		body.take_damage(snapback_damage)
+	$CollisionSound.play()
 
 
 func _on_head_cooldown_timer_timeout():
@@ -166,6 +168,10 @@ shape = SubResource("CircleShape2D_ye8wa")
 [node name="HeadAttackTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xh7bi")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HeadCooldownTimer" to="." method="_on_head_cooldown_timer_timeout"]

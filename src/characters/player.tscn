@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgs1dpdtyic4m" path="res://src/characters/head_spawner.tscn" id="4_8607u"]
 [ext_resource type="PackedScene" uid="uid://dtddfgdtpv4g4" path="res://src/objects/flash_animation.tscn" id="4_mwo3c"]
 [ext_resource type="PackedScene" uid="uid://sd3esg30r6if" path="res://src/characters/head.tscn" id="4_newol"]
-[ext_resource type="AudioStream" uid="uid://bdxf63434eqyf" path="res://assets/assets_sfx/pop-sound_deraj.wav" id="7_sk3qg"]
+[ext_resource type="AudioStream" uid="uid://cmc2x46238iau" path="res://assets/assets_sfx/pop fire.wav" id="7_252dt"]
 [ext_resource type="Texture2D" uid="uid://37qe4owywnmr" path="res://assets/assets_characters/healthbar.png" id="8_fcpbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3auf"]
@@ -134,7 +134,7 @@ position = Vector2(0, -39)
 [node name="FlashAnimation" parent="." instance=ExtResource("4_mwo3c")]
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_sk3qg")
+stream = ExtResource("7_252dt")
 volume_db = -4.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
